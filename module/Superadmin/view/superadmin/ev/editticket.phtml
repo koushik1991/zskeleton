@@ -1,0 +1,81 @@
+<section id="main-content">
+      <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel">
+                  <h4 class="mb">Edit tickets</h4>
+                  <form class="form-horizontal style-form" action="/ev/updateticket" method="post" enctype="multipart/form-data">
+                      <input type="hidden" value="<?php echo $ticket->ticket_id ?>" name="ticket_id" />
+                      <input type="hidden" value="<?php echo $ticket->event_id; ?>" name="event_id" />
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Ticket Name</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="ticket_name" value="<?php echo $ticket->ticket_name ?>">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Description</label>
+                          <div class="col-sm-10">
+                              <textarea name="ticket_desc" class="form-control" style="height:100px;"><?php echo $ticket->ticket_description ?></textarea>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Price</label>
+                          <div class="col-sm-10">
+                              <input type="number" step="any" class="form-control" name="ticket_price" value="<?php echo $ticket->	ticket_price ?>">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Entertainment Tax</label>
+                          <div class="col-sm-10">
+                              <input type="number" step="any" class="form-control" name="ticket_enttax" value="<?php echo $ticket->ticket_enttax ?>">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Convenience Fee</label>
+                          <div class="col-sm-10">
+                              <input type="number" step="any" class="form-control" name="ticket_conveniencefee" value="<?php echo $ticket->ticket_convefee ?>">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Service tax</label>
+                          <div class="col-sm-10">
+                              <input type="number" step="any" class="form-control" name="ticket_servicetax" readonly value="<?php echo $ticket->ticket_servicetax ?>">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Inventory</label>
+                          <div class="col-sm-10">
+                              <input type="number" step="any" class="form-control" name="ticket_inventory" value="<?php echo $ticket->ticket_total_numbers ?>">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">At Least & At most</label>
+                          <div class="col-sm-5">
+                              <input type="number" step="any" class="form-control" name="ticket_min_numbers" placeholder="Minimum number tickets to buy" value="<?php echo $ticket->ticket_at_leaset ?>">
+                          </div>
+                          <div class="col-sm-5">
+                              <input type="number" step="any" class="form-control" name="ticket_max_numbers" placeholder="Maximum number tickets to buy" value="<?php echo $ticket->ticket_at_most; ?>">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label">Available for</label>
+                          <div class="col-sm-10">
+                              <input class="form-control rd rd_date" type="text" name="ticket_available_date_from" placeholder="Starts from" value="<?php echo $ticket->ticket_available_date_from ?>" />
+                              <input class="form-control rd rd_date" type="text" name="ticket_available_date_to" placeholder="To" value="<?php echo $ticket->ticket_available_date_to ?>"/>
+                              <input class="form-control rd rd_time" type="text" name="ticket_available_time_from" placeholder="Starts at" value="<?php echo $ticket->ticket_available_time_from ?>"/>
+                              <input class="form-control rd rd_time" type="text" name="ticket_available_time_to" placeholder="To" value="<?php echo $ticket->ticket_available_time_to ?>"/>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-sm-10">
+                            <input type="submit" value="Save ticket" class="btn btn-success btn-sm" />
+                          </div>
+                      </div>
+                  </form>
+              </div>
+</div><!-- Event form section-->
+        </div><!-- /row -->
+      </section><! --/wrapper -->
+</section>

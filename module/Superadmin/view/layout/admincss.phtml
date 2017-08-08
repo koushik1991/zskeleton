@@ -1,0 +1,53 @@
+<?php
+$this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/css/customise/admin.css?version=' . $t);
+
+switch ($currentPage) {
+	case 'index':
+		$this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/css/to-do.css?version=' . $t);
+		break;
+    case 'add':
+		$this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/css/jquery.timepicker.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/texteditor/froala_editor.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/texteditor/froala_style.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/js/gritter/css/jquery.gritter.css?version=' . $t);
+		break;
+    case 'edit':
+		$this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/css/jquery.timepicker.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/texteditor/froala_editor.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/texteditor/froala_style.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/js/gritter/css/jquery.gritter.css?version=' . $t);
+		break;
+    case 'addticket':
+        $this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/css/jquery.timepicker.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/texteditor/froala_editor.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/texteditor/froala_style.css?version=' . $t);
+        break;
+    case 'editticket':
+        $this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/css/jquery.timepicker.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/texteditor/froala_editor.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/texteditor/froala_style.css?version=' . $t);
+        break;
+    case 'media':
+        $this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/js/fancybox/jquery.fancybox.css?version=' . $t);
+        break;
+	default :
+		break;
+			
+}
+
+$this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/css/to-do.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/style-responsive.css?version=' . $t)
+		->prependStylesheet($this->basePath() . '/assets/css/style.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/font-awesome/css/font-awesome.css?version='. $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/bootstrap.css?version='. $t)
+        ->prependStylesheet('//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+echo $this->headLink();
+?>

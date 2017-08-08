@@ -1,0 +1,52 @@
+<!--main content start-->
+<section id="main-content">
+              <section class="wrapper">
+		  		<div class="row mt">
+			  		<div class="col-lg-12">
+                      <div class="content-panel">
+                      <h4><i class="fa fa-angle-right"></i> User lists</h4>
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>username</th>
+                                  <th>Email</th>
+                                  <th>Role</th>
+                                  <th>Registration date</th>
+                                  <th>Action</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                  <?php
+                                  $counter =1;
+                                  foreach($getUsers as $eachUser) {?>
+                                  <tr>
+                                      <td><?php echo $counter++ ?></td>
+                                      <td><?php echo $eachUser->user_name ?></td>
+                                      <td><?php echo $eachUser->email ?></td>
+                                      <td><?php if($eachUser->role_id == 1){
+                                              echo "Subscriber";
+                                            } else {
+                                              echo "Administrator";
+                                            }
+                                          ?>
+                                      </td>
+                                      <td><?php echo $eachUser->created_date ?></td>
+                                      <td>
+                                          <a href="/user/booking/user_id/<?php echo $eachUser->user_id; ?>">
+                                              <button title="View booking for this user" class="btn btn-primary btn-xs fa fa-arrow-right"></button>
+                                          </a>
+                                      </td>
+                                  </tr>
+                                  <?php } ?>
+                              </tbody>
+                          </table>
+                          </section>
+                  </div><!-- /content-panel -->
+               </div><!-- /col-lg-4 -->
+		  	</div><!-- /row -->
+		</section>
+
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->

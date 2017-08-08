@@ -1,0 +1,86 @@
+<section id="main-content">
+      <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel">
+                  <h4 class="mb">Edit artist</h4>
+                  <form class="form-horizontal style-form" action="/ev/updateartist" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
+                          <input type="hidden" value="<?php echo $artists->artist_id ?>" name="artist_id" />
+                          <label class="col-sm-2 col-sm-2 control-label">Title</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="artists_title" value="<?php echo $artists->title ?>">
+                          </div>
+                      </div> <!-- artists title -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Description</label>
+                          <div class="col-sm-10">
+                              <textarea name="artists_desc" class="form-control" style="height:100px;"><?php echo $artists->description ?></textarea>
+                          </div>
+                      </div> <!-- artists description -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Photo</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Upload artist pic :- </label>
+                              <?php if(trim($artists->image) != "") { ?>
+                                <img src="<?php echo $artists->image; ?>" style="height:80px; width:80px;" />
+                              <?php } ?>
+                              <input class="form-control" type="file" name="artistsImage"/>
+                              <input type="hidden" name="artistsImageHidden" value="<?php echo $artists->image; ?>" />
+                          </div>
+                      </div> <!-- artists image -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Artist Website</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="artists_website" value="<?php echo $artists->artist_website; ?>">
+                              <span class="help-block">Enter artist's website link</span>
+                          </div>
+                      </div> <!-- artists Website -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Artist Soundcloud</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="artists_soundcloud" value="<?php echo $artists->artist_soundcloud; ?>">
+                              <span class="help-block">Enter artist's soundcloud link</span>
+                          </div>
+                      </div> <!-- artists Soundcloud -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Artist Instagram</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="artists_instagram" value="<?php echo $artists->artist_instagram; ?>">
+                              <span class="help-block">Enter artist's instagram link</span>
+                          </div>
+                      </div> <!-- artists Instagram -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Artist Twitter</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="artists_twitter" value="<?php echo $artists->artist_twitter; ?>">
+                              <span class="help-block">Enter artist's twitter link</span>
+                          </div>
+                      </div> <!-- artists Twitter -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Artist Facebook</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="artists_facebook" value="<?php echo $artists->artist_fb; ?>">
+                              <span class="help-block">Enter artist's facebook page link</span>
+                          </div>
+                      </div> <!-- artists Facebook -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">On tour artists?</label>
+                          <div class="col-sm-10">
+                              <label>
+                                  <input type="radio" name="optionOnTour" value="1" <?php echo ($artists->on_tour_flag == 1)? 'checked':''; ?>> Yes
+                                  <input type="radio" name="optionOnTour" value="0" <?php echo ($artists->on_tour_flag == 0)? 'checked':''; ?>> No
+						      </label>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-sm-10">
+                            <input type="submit" value="Save artist" class="btn btn-success btn-sm" />
+                          </div>
+                      </div>
+                  </form>
+              </div>
+</div><!-- Event form section-->
+        </div><!-- /row -->
+      </section><! --/wrapper -->
+</section>

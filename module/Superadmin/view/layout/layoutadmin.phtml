@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $title; ?></title>
+	
+	<?php 
+    $t = time();
+    echo $this->headLink()
+        ->prependStylesheet($this->basePath() . '/assets/css/style-responsive.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/style.css?version=' . $t)
+        ->prependStylesheet($this->basePath() . '/assets/font-awesome/css/font-awesome.css?version='. $t)
+        ->prependStylesheet($this->basePath() . '/assets/css/bootstrap.css?version='. $t);
+    ?> 
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>	
+	<?php echo $this->content; 
+    echo $this->headScript()
+        ->prependFile($this->basePath() . '/assets/js/jquery.backstretch.min.js?version=' . $t)
+        ->prependFile($this->basePath() . '/assets/js/bootstrap.min.js?version=' . $t)
+        ->prependFile($this->basePath() . '/assets/js/jquery.js?version=' . $t);
+    ?>
+    <script>
+        $.backstretch("/assets/img/login-bg.jpg", {speed: 500});
+    </script>
+	  
+
+  </body>
+</html>

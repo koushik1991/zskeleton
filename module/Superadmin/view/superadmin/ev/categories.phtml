@@ -1,0 +1,39 @@
+<!--main content start-->
+<section id="main-content">
+<section class="wrapper">
+<!-- SORTABLE TO DO LIST -->
+<div class="row mt mb">
+    <div class="col-md-12">
+              <section class="task-panel tasks-widget">
+                <div class="panel-heading">
+                    <div class="pull-left"><h5><i class="fa fa-tasks"></i> Categories </h5></div>
+                    <br>
+                </div>
+                  <div class="panel-body">
+                      <div class="task-content">
+                          <ul id="sortable" class="task-list tag-lists eventCategories">
+                              <?php foreach($categories as $eachCategories){ ?>
+                              <li class="list-primary" data-orderconnect="<?php echo $eachCategories->id; ?>">
+                                  <i class=" fa fa-ellipsis-v"></i>
+
+                                  <div class="task-title">
+                                      <span class="task-title-sp"><?php echo $eachCategories->name; ?></span>
+                                      <div class="pull-right hidden-phone">
+                                          <a href="/ev/editcategory/<?php echo $eachCategories->id ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button></a>
+                                          <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                      </div>
+                                  </div>
+                              </li>
+                              <?php } ?>
+                          </ul>
+                      </div>
+                      <div class="add-task-row" style="text-align:center;">
+                          <a class="btn btn-default btn-sm pull-left" href="/ev/addcategory">Add New</a>
+                      </div>
+                  </div>
+              </section>
+          </div><!--/Header menu section ended -->
+  </div><!-- /row -->
+</section><! --/wrapper -->
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->

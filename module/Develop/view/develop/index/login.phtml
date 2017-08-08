@@ -1,0 +1,33 @@
+<style type="text/css">
+    .form-bg {
+        margin: 0 auto;
+        width: 500px;
+        background: #e2e2e2;
+        padding: 20px;
+        overflow: hidden;
+    }
+</style>
+<form class="form-bg" action="/develop/login" method="post">
+    <label>Email / phone</label>
+    <br>
+    <input  type="text" name="emailorphone" value="<?php echo (isset($checkingResponse['submittedValue']['emailorphone']) ? $checkingResponse['submittedValue']['emailorphone'] : '' ) ?>">
+    <br>
+    <label>password</label>
+    <br>
+    <input  type="text" name="loginpassword" value="">
+    <br>
+    <input type="submit" value="Next" name="login">
+    <br>
+    <?php if(isset($checkingResponse) && $checkingResponse['code'] == 2) { ?>
+    <label>Please insert your credentials to login</label>
+    <br/>
+    <?php } ?>
+    <?php if(isset($checkingResponse) && $checkingResponse['code'] == 3) { ?>
+    <label>There are no account assciate with your email address</label>
+    <br/>
+    <?php } ?>
+    <?php if(isset($checkingResponse) && $checkingResponse['code'] == 4) { ?>
+    <label>There are no account assciate with your phoner number</label>
+    <br/>
+    <?php } ?>
+</form>

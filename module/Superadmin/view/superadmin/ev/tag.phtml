@@ -1,0 +1,46 @@
+<!--main content start-->
+<section id="main-content">
+<section class="wrapper">
+<!-- SORTABLE TO DO LIST -->
+<div class="row mt mb">
+    <div class="col-md-12">
+              <section class="task-panel tasks-widget">
+                <div class="panel-heading">
+                    <div class="pull-left"><h5><i class="fa fa-tasks"></i> Event tags </h5></div>
+                    <br>
+                </div>
+                  <div class="panel-body">
+                      <div class="task-content">
+                          <ul id="sortable" class="task-list tag-lists">
+                              <?php foreach($eventtagList as $eachTag){ ?>
+                              <li class="list-primary" data-orderconnect="<?php echo $eachMenu->menu_id; ?>">
+                                  <i class=" fa fa-ellipsis-v"></i>
+
+                                  <div class="task-title">
+                                      <span class="task-title-sp"><?php echo $eachTag->name; ?></span>
+                                      <div class="pull-right hidden-phone">
+                                          <button class="btn btn-success btn-xs fa fa-check" style="display:none;"></button>
+                                          <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                          <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                      </div>
+                                  </div>
+                                  <div class="task-edit">
+                                      <input type="text" value="<?php echo $eachTag->name; ?>" name="tagTitle" />
+                                      <input type="text" value="<?php echo $eachTag->description; ?>" name="tagDescription" />
+                                  </div>
+                              </li>
+                              <?php } ?>
+                          </ul>
+                      </div>
+                      <div class="add-task-row" style="text-align:center;">
+                          <a class="btn btn-default btn-sm pull-left header-menu-add" href="javascript:void(0)">Add New</a>
+                          <a class="pull-center header-menu-message" href="javascript:void(0)" style="display:none;">Your changes is not save. Save it!</a>
+                          <a class="btn btn-success btn-sm pull-right header-menu-save" href="javascript:void(0)" style="display:none;">Save changes</a>
+                      </div>
+                  </div>
+              </section>
+          </div><!--/Header menu section ended -->
+  </div><!-- /row -->
+</section><! --/wrapper -->
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->

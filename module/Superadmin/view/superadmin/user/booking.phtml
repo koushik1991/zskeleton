@@ -1,0 +1,46 @@
+<!--main content start-->
+<section id="main-content">
+              <section class="wrapper">
+		  		<div class="row mt">
+			  		<div class="col-lg-12">
+                      <div class="content-panel">
+                      <h4><i class="fa fa-angle-right"></i> User lists</h4>
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Email</th>
+                                  <th>Event name</th>
+                                  <th>Booking date</th>
+                                  <th>No. of Seats</th>
+                                  <th>Ticket</th>
+                                  <th>Amount</th>
+                                  <th>Status</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                  <?php
+                                  $counter =1;
+                                  foreach($bookings as $eachBooking) {?>
+                                  <tr>
+                                      <td><?php echo $counter++ ?></td>
+                                      <td><?php echo $users[$eachBooking->user_id]->email; ?></td>
+                                      <td><?php echo $events[$eachBooking->event_id]->event_title; ?></td>
+                                      <td><?php echo date('Y-m-d',strtotime($eachBooking->created_date)); ?></td>
+                                      <td><?php echo $eachBooking->number_tickets; ?></td>
+                                      <td><?php echo $ticket[$eachBooking->ticket_id]->ticket_name ?></td>
+                                      <td><?php echo $eachBooking->amount_paid; ?></td>
+                                      <td><?php echo (($eachBooking->status == 1) ? 'Paid':'Pending'); ?></td>
+                                  </tr>
+                                  <?php } ?>
+                              </tbody>
+                          </table>
+                          </section>
+                  </div><!-- /content-panel -->
+               </div><!-- /col-lg-4 -->
+		  	</div><!-- /row -->
+		</section>
+
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->

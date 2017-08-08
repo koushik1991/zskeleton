@@ -1,0 +1,22 @@
+<form class="admin-form" id="signupform">
+		<h1>Start doing cool stuff in seconds.</h1>
+        <input type="text" placeholder="First Name" required="" name="fname">
+        <input type="text" placeholder="Last Name" required="" name="lname">
+        <input type="email" placeholder="Email" required="" name="email">
+        <input type="text" placeholder="Phone 1" required="" name="phone1">
+        <input type="text" placeholder="Phone 2" name="phone2">
+        <input type="text" placeholder="User Name" required="" name="uname" >
+		<input type="password" placeholder="Choose your password" required="" id="password" name="password">
+		<input type="password" placeholder="Confirm password" required="" id="confirm_password"  name="cpassword">					
+		<button type="submit" id="signupAction" name="signupAction">Sign up for free!</button>	
+</form>
+<form class="admin-form" id="signinform" style="display:none;">
+		<h1>Start doing cool stuff in seconds.</h1>
+		<input type="text" placeholder="User name" required="" name="uname">
+		<input type="password" placeholder="Choose your password" required="" name="password">
+		<button type="submit"  id="signinAction">Sign in</button>	
+</form>
+<div class="already-login-container">
+    <p id="login">Already have an account? <a href="javascript:void(0)" id="loginClick">Login</a>!</p>
+    <p style="display:none;" id="signup">New user? <a href="javascript:void(0)" id="signUpClick" >Sign up </a>!</p>
+</div>

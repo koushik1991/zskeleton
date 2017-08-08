@@ -1,0 +1,99 @@
+<section id="main-content">
+      <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel">
+                  <h4 class="mb">Edit article</h4>
+                  <form class="form-horizontal style-form" method="post" enctype="multipart/form-data" action="/article/updatearticle">
+                      <input type="hidden" value="<?php echo $article->article_id; ?>" name="article_id" />
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Title</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="article_title" value="<?php echo $article->article_title ?>">
+                          </div>
+                      </div> <!-- article title -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Description</label>
+                          <div class="col-sm-10">
+                              <textarea name="article_desc" class="form-control" style="height:100px;"><?php echo $article->article_desc ?></textarea>
+                          </div>
+                      </div> <!-- article description -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Category</label>
+                          <div class="col-sm-10">
+                              <select class="form-control"name="article_category">
+                                <?php foreach($categories as $eachCategories){ ?>
+                                  <option value="0">Select category</option>
+                                    <option value="<?php echo $eachCategories->id; ?>" <?php echo (($article->category_id == $eachCategories->id) ? 'selected':''); ?>><?php echo $eachCategories->name; ?></option>
+                                <?php } ?>
+                              </select>
+                          </div>
+                      </div> <!-- article categories -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Image</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Do you want to feature this article on Home page?</label><br/>
+                              <label>
+                                  <input type="radio" name="optionSlider" value="1" <?php echo ($article->article_featured == 1)? 'checked':''; ?> onclick="$('.homePageSlider').slideDown(1000)"> Yes
+                                  <input type="radio" name="optionSlider" value="0" <?php echo ($article->article_featured == 0)? 'checked':''; ?> onclick="$('.homePageSlider').slideUp(1000)" /> No
+						      </label>
+                              <hr>
+                              <div class="homePageSlider" <?php echo ($article->article_featured == 0)? 'style="display:none;"':'style="display:block;"'; ?>>
+                              <label class="control-label">Home page feature image</label>
+                              <span class="help-block help-block-tileImage">Dimensions : Standard width 257px x height 167px</span>
+                              <?php if(trim($article->article_featured_image) != "") { ?>
+                                <img src="<?php echo $article->article_featured_image; ?>" style="height:80px; width:80px;" />
+                              <?php } ?>
+                              <input class="form-control" type="file" name="homePageFeatureImage"/>
+                                  <input type="hidden" name="homePageFeatureImageHidden" value="<?php echo $article->article_featured_image; ?>" />
+                              <hr>
+                              </div>
+                              <label class="control-label">Article detail page banner Image</label>
+                              <span class="help-block help-block-errorBlock">Dimensions : Width 710px x Height 360px</span>
+                              <?php if(trim($article->article_detail_image) != "") { ?>
+                                <img src="<?php echo $article->article_detail_image; ?>" style="height:80px; width:80px;" />
+                              <?php } ?>
+                              <input type="hidden" name="detailImageHidden" value="<?php echo $article->article_detail_image; ?>" />
+                              <input class="form-control" type="file" name="detailImage"/>
+                          </div>
+                      </div> <!-- article images -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                          <label class="control-label">Trending article?</label><br/>
+                          <label>
+                              <input type="radio" name="optionTrending" value="1"> Yes
+                              <input type="radio" name="optionTrending" value="0" checked /> No
+                          </label>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Twitter</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="article_twitter" value="<?php echo $article->article_twitter ?>">
+                          </div>
+                      </div> <!-- artists Twitter -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Facebook</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="article_facebook" value="<?php echo $article->article_fb ?>">
+                          </div>
+                      </div> <!-- artists Facebook -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Email</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="article_email" value="<?php echo $article->article_email ?>">
+                          </div>
+                      </div> <!-- article Email -->
+                      <div class="form-group">
+                          <div class="col-sm-10">
+                            <input type="submit" value="Publish article" class="btn btn-success btn-sm" name="submittosave" />
+                          </div>
+                      </div>
+                  </form>
+              </div>
+            </div><!-- Event form section-->
+        </div><!-- /row -->
+      </section><! --/wrapper -->
+</section>

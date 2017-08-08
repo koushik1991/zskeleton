@@ -1,0 +1,79 @@
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<h3>
+			<i class="fa fa-angle-right"></i> Update Banner
+		</h3>
+
+
+		<!-- BASIC FORM ELELEMNTS -->
+		<div class="row mt">
+			<div class="col-lg-12">
+				<div class="form-panel">
+					<form class="form-horizontal style-form" id='bannerAddForm'
+						method="post"
+						action="/banner/updatebanner" enctype="multipart/form-data">
+                        <input type="hidden" id="bannerId" name="bannerId" value="<?php echo $bannerdata[0]['banner_id']; ?>" />
+                        <div class="form-group">
+							<label class="col-sm-2 control-label">Banner Name :</label>
+							<div class="col-sm-10">
+								<input type="text" aria-required="true" aria-invalid="true"
+									class="form-control" id="banrName" name='banrName' value="<?php echo $bannerdata[0]['banner_alt_text']; ?>" required />
+								<label id="errorName" style="margin-right: 10em;"></label>
+							</div>
+						</div>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">Banner Image : <label><label class="col-sm-12"></label><small>(Image should not be more than 1MB or 640 X 480 in size and should be of type gif/png/jpg/jpeg only)</small></label>
+                            </label>
+							<div class="col-sm-10">
+								<input type="file" class="form-control" name="fileupload"
+									id="fileupload" style='height: 30%;' required />
+								<div id="upload_prev" class="upload_prev">
+                                    <?php if(!empty($bannerdata[0]['banner_image_path'])){ ?>
+									<img class="image" id="image" src="<?php echo $bannerdata[0]['banner_image_path'] ?>" onerror="this.src='/image/profile-deafult-avatar.jpg'" height="100px" width="100px" style="margin: 5px 12em 0 0;" />
+									<?php } else{ ?>
+                                     <img src=""  height="100px" />
+                                    <?php }?>
+								</div>
+								<label id="errorImg1" style="margin-right: 10em;"></label><!--img extnsn valid-->
+								<label id="errorImg2" style="margin-right: 10em;"></label><!--img size(>1MB) valid-->
+								<label id="errorImg3" style="margin-right: 10em;"></label><!--blank image valid-->
+                                <input type="hidden" id="prevImgPath" name="prevImgPath" value="<?php echo $bannerdata[0]['banner_image_path'] ?>" />
+							</div>
+
+						</div>
+                        <div class="form-group">
+							<label class="col-sm-2 control-label">Banner Redirect Link : <label class="col-sm-12"></label><small>(optional)</small></label>
+							<div class="col-sm-10">
+								<input type="text" aria-required="true" aria-invalid="true"
+									class="form-control" id="banrLink" name='banrLink' value="<?php echo $bannerdata[0]['banner_redirect']; ?>" placeholder="https://www.example.com" required />
+								<label id="errorLink" style="margin-right: 10em;"></label>
+							</div>
+						</div>
+                        <div class="form-group">
+							<label class="col-sm-2 control-label">Visibility :</label>
+							<div class="col-sm-8 radio">
+								<label class='radio_class'>
+								    <input type="radio"
+									name="visibility" id="visibleNot" value="0" <?php if(($bannerdata[0]['banner_isVisible']) == 0) echo "checked"; ?> />Not Visible
+								</label>
+								 <label class='radio_class'>
+								    <input type="radio"
+									name="visibility" id="visible" value="1" <?php if(($bannerdata[0]['banner_isVisible']) == 1) echo "checked"; ?> />Visible
+								 </label>
+							</div>
+				        </div>
+						<div class="col-md-7 temp_btn">
+                            <button class="btn_green btn_useradd" type="button" style="margin: 35px !important;" id='btnSave' value="Save">Update</button>
+						</div>
+					</form>
+				</div>
+				<!-- /form-panel -->
+			</div>
+			<!-- /col-lg-12 -->
+		</div>
+		<!-- /row -->
+	</section>
+	<!--wrapper -->
+</section>
+<!-- /MAIN CONTENT -->

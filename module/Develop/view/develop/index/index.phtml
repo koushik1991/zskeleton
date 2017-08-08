@@ -1,0 +1,77 @@
+<style type="text/css">
+    .form-bg {
+        margin: 0 auto;
+        width: 500px;
+        background: #e2e2e2;
+        padding: 20px;
+    }
+</style>
+<form class="form-bg" action="/develop" method="post" enctype="multipart/form-data">
+    <label>user_fname</label>
+    <br>
+    <input type="text" name="user_fname" value="<?php echo (isset($checkingResponse['submittedValue']['user_fname']) ? $checkingResponse['submittedValue']['user_fname'] : '' ) ?>">
+    <br>
+    <label>user_mname</label>
+    <br>
+    <input type="text" name="user_mname" value="<?php echo (isset($checkingResponse['submittedValue']['user_mname']) ? $checkingResponse['submittedValue']['user_mname'] : '' ) ?>">
+    <br>
+    <label>user_lname</label>
+    <br>
+    <input type="text" name="user_lname" value="<?php echo (isset($checkingResponse['submittedValue']['user_lname']) ? $checkingResponse['submittedValue']['user_lname'] : '' ) ?>">
+    <br>
+    <label>user_picture</label>
+    <br>
+    <input type="file" name="user_picture">
+    <br>
+    <label>user_date_of_birth</label>
+    <br>
+    <input type="text" name="user_date_of_birth" value="<?php echo (isset($checkingResponse['submittedValue']['user_date_of_birth']) ? $checkingResponse['submittedValue']['user_date_of_birth'] : '' ) ?>">
+    <br>
+    <label>user_password</label>
+    <br>
+    <input type="password" name="user_password" value="">
+    <br>
+    <label>user_confirm_password</label>
+    <br>
+    <input type="password" name="user_confirm_password" value="">
+    <br>
+    <?php if(isset($checkingResponse) && $checkingResponse['code'] == 5) { ?>
+    <label>Either you left password field blank or Password and confirm password are not matched.</label>
+    <br/>
+    <?php } ?>
+    <label>user_gender</label>
+    <br>
+    <select name="user_gender">
+        <option <?php echo ((isset($checkingResponse['submittedValue']['user_gender']) && $checkingResponse['submittedValue']['user_gender'] == 'M') ? 'selected="selected"' : '' ) ?> value="M">Male</option>
+        <option <?php echo ((isset($checkingResponse['submittedValue']['user_gender']) && $checkingResponse['submittedValue']['user_gender'] == 'F') ? 'selected="selected"' : '' ) ?> value="F">Female</option>
+        <option <?php echo ((isset($checkingResponse['submittedValue']['user_gender']) && $checkingResponse['submittedValue']['user_gender'] == 'O') ? 'selected="selected"' : '' ) ?> value="O">Other</option>
+    </select>
+    <br>
+    <label>user_phone_number</label>
+    <br>
+    <input type="text" name="user_phone_number" value="<?php echo (isset($checkingResponse['submittedValue']['user_phone_number']) ? $checkingResponse['submittedValue']['user_phone_number'] : '' ) ?>">
+    <br>
+    <?php if(isset($checkingResponse) && $checkingResponse['code'] == 3) { ?>
+    <label>phone number is allready exists</label>
+    <br/>
+    <?php } ?>
+    <label>user_altername_phone_number</label>
+    <br>
+    <input type="text" name="user_altername_phone_number" value="<?php echo (isset($checkingResponse['submittedValue']['user_altername_phone_number']) ? $checkingResponse['submittedValue']['user_altername_phone_number'] : '' ) ?>">
+    <br>
+    <?php if(isset($checkingResponse) && $checkingResponse['code'] == 4) { ?>
+    <label>Alternate phone number is allready exists</label>
+    <br/>
+    <?php } ?>
+    <label>user_email</label>
+    <br>
+    <input type="text" name="user_email" value="<?php echo (isset($checkingResponse['submittedValue']['user_email']) ? $checkingResponse['submittedValue']['user_email'] : '' ) ?>">
+    <br>
+    <?php if(isset($checkingResponse) && $checkingResponse['code'] == 2) { ?>
+    <label>Email id is allready exists</label>
+    <br/>
+    <?php } ?>
+    <input type="submit" value="Next" name="userregistrationFirst">
+    <br>
+
+</form>

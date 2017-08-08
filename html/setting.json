@@ -1,0 +1,14 @@
+{
+    "domain": {
+	        "domain_name"     	: "mylunchboxexpress.com",
+	        "home"          	: "/var/www/html",
+            "master_domain" 	: "mylunchboxexpress.com"
+    },
+    "database": {
+	        "database_dsn"   		: "mysql:dbname=skeleton;host=localhost",
+	        "database_host"   		: "localhost",
+	        "database_name"			: "skeleton",
+	        "database_username"	  	: "root",
+	        "database_password"	 	: ""
+    }
+}

@@ -1,0 +1,73 @@
+<!--main content start-->
+<section id="main-content">
+<section class="wrapper">
+<!-- SORTABLE TO DO LIST -->
+<div class="row mt mb">
+    <div class="col-md-12">
+              <section class="task-panel tasks-widget">
+                <div class="panel-heading">
+                    <div class="pull-left"><h5><i class="fa fa-tasks"></i> Event tickets  </h5></div>
+                    <br>
+                </div>
+
+                  <div class="panel-body">
+                      <label class="control-label">Booking Cut-off Date</label><br/>
+                      <input type="text" class="form-control" name="booking_end_date" value="<?php echo $event->booking_cutoffdate ?>" style="width: 95%;float: left;" />
+                      <a rel="<?php echo $eventId; ?>" class="btn btn-default btn-sm pull-right updateEventBookingDate" style="padding:7px 12px;">Save</a>
+                  </div>
+                  <div class="panel-body">
+                      <label class="control-label">Customized data to view on ticket queue page</label><br>
+                      <label class="control-label" style="float: left;margin-right: 20px;">people are viewing this event</label>
+                      <input type="text" class="form-control" name="ticket_customize_number_to_view" value="<?php echo $event->ticket_customize_number_to_view ?>" style="width: 5%;float: left;margin-right: 10px;">
+
+                      <label class="control-label" style="float: left;margin-right: 20px;">tickets left</label>
+                      <input type="text" class="form-control" name="ticket_customize_number_to_left" value="<?php echo $event->ticket_customize_number_to_left ?>" style="width: 5%;float: left;margin-right: 20px;">
+
+                      <label class="control-label" style="float: left;margin-right: 20px;">% of tickets left for this event</label>
+                      <input type="text" class="form-control" name="ticket_customize_percentage_to_left" value="<?php echo $event->ticket_customize_percentage_to_left ?>" style="width: 5%;float: left;margin-right: 20px;">
+                      <a rel="<?php echo $eventId; ?>" class="btn btn-default btn-sm pull-right updateEventCustomData" style="padding:7px 12px;">Save</a>
+                  </div>
+                  <div class="panel-body">
+                      <label class="control-label">Ticketing Type</label><br/>
+                      <label>
+                          <input type="radio" name="ticketType" value="0" onclick="$('.task-content').slideUp(1000); $('.ticketSystem').slideDown(1000);" id="booknow" <?php echo ($event->event_ticketType == 0)? 'checked':''; ?>>
+                          <label for="booknow">Book Now</label>
+                          <input type="radio" name="ticketType" value="1" onclick="$('.task-content').slideUp(1000)" id="register" <?php echo ($event->	event_ticketType == 1)? 'checked':''; ?> />
+                          <label for="register">Register</label>
+                          <input type="radio" name="ticketType" value="2" onclick="$('.task-content').slideUp(1000); $('.migrateEvent').slideDown(1000);" id="migrateevent" <?php echo ($event->event_ticketType == 2)? 'checked':''; ?>/>
+                          <label for="migrateevent">Migrated Event</label>
+                      </label>
+                      <hr>
+                      <div class="task-content ticketSystem" <?php echo ($event->event_ticketType == 0)? 'style="display:block;"':'style="display:none;"'; ?> >
+                          <ul id="sortable" class="task-list">
+                              <?php foreach($tickets as $eachtickets){ ?>
+                              <li class="list-primary" data-orderconnect="<?php echo $eachtickets->ticket_id; ?>">
+                                  <i class=" fa fa-ellipsis-v"></i>
+
+                                  <div class="task-title">
+                                      <span class="task-title-sp"><?php echo $eachtickets->ticket_name; ?></span>
+                                      <div class="pull-right hidden-phone">
+                                          <a href="/ev/editticket/<?php echo $eachtickets->ticket_id; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button></a>
+                                          <button class="btn btn-danger btn-xs fa fa-trash-o event-trash"></button>
+
+                                      </div>
+                                  </div>
+                              </li>
+                              <?php } ?>
+                          </ul>
+                          <div class="add-task-row" style="text-align:center;">
+                          <a class="btn btn-default btn-sm pull-left" href="/ev/addticket/<?php echo $eventId; ?>">Add New</a>
+                      </div>
+                      </div>
+                      <div class="task-content migrateEvent" <?php echo ($event->event_ticketType == 2)? 'style="display:block;"':'style="display:none;"'; ?> >
+                          <label>Migrate event url :-</label><br/>
+                          <input type="text" name="migrateUrl" class="form-control" />
+                      </div>
+                  </div>
+
+              </section>
+          </div><!--/Header menu section ended -->
+  </div><!-- /row -->
+</section><! --/wrapper -->
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->

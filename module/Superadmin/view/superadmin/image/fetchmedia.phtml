@@ -1,0 +1,42 @@
+<style>
+div.desc{
+    height: 150px;
+    width: 150px;
+    float: left;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #fff;
+    margin-left: 20px;
+    border: 2px solid;
+}
+div.desc img{
+    width: 150px;
+    height: 110px;
+}
+
+.overlay {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-color: #68dff0;
+  text-align: center;
+    cursor: pointer;
+}
+
+</style>
+<script type="text/javascript">
+function getTheLink(image) {
+    var htmlOfContent = '<div class="descinadd"><input type="hidden" name="imagegallery[]" value="'+image+'" /><img class="img-responsive" src="'+image+'" alt=""><span onclick="$(this).parent().remove()">X</span></div>';
+    $(".imagegallery").append(htmlOfContent);
+}
+</script>
+<?php foreach($images as $eachImageFromDirectory) {?>
+    <div class="desc">
+
+                <a><img class="img-responsive" src="<?php echo $eachImageFromDirectory ?>" alt=""></a>
+
+            <div class="overlay" onclick="getTheLink('<?php echo $eachImageFromDirectory ?>')">Add</div>
+
+    </div>
+
+<?php } ?>

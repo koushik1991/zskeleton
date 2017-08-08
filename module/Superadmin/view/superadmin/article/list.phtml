@@ -1,0 +1,45 @@
+<!--main content start-->
+<section id="main-content">
+<section class="wrapper">
+<!-- SORTABLE TO DO LIST -->
+<div class="row mt mb">
+    <div class="col-md-12">
+              <section class="task-panel tasks-widget">
+                <div class="panel-heading">
+                    <div class="pull-left"><h5><i class="fa fa-tasks"></i> Articles </h5></div>
+                    <br>
+                </div>
+                  <div class="panel-body">
+                      <div class="task-content">
+                          <ul id="sortable" class="task-list article-sortable">
+                              <?php foreach($articleList as $eachArticle){  ?>
+                              <li class="list-primary" data-orderconnect="<?php echo $eachArticle->article_id; ?>" data-order="<?php echo $eachArticle->article_rank; ?>">
+                                  <i class=" fa fa-ellipsis-v"></i>
+
+                                  <div class="task-title">
+                                      <span class="task-title-sp"><?php echo $eachArticle->article_title; ?></span>
+                                      <div class="pull-right hidden-phone">
+                                          <a href="/article/editarticle/<?php echo $eachArticle->article_id; ?>">
+                                              <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                          </a>
+                                          <a target="_blank" href="/backstagedetails/<?php echo $eachArticle->article_id; ?>">
+                                              <button class="btn btn-primary btn-xs fa fa-eye"></button>
+                                          </a>
+                                          <button class="btn btn-danger btn-xs fa fa-trash-o event-trash"></button>
+
+                                      </div>
+                                  </div>
+                              </li>
+                              <?php } ?>
+                          </ul>
+                      </div>
+                      <div class="add-task-row" style="text-align:center;">
+                          <a class="btn btn-default btn-sm pull-left" href="/article/addarticle">Add New</a>
+                      </div>
+                  </div>
+              </section>
+          </div><!--/Header menu section ended -->
+  </div><!-- /row -->
+</section><! --/wrapper -->
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->

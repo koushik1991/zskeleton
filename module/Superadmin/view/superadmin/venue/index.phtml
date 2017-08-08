@@ -1,0 +1,60 @@
+<!--main content start-->
+<section id="main-content">
+<section class="wrapper">
+<!-- SORTABLE TO DO LIST -->
+<div class="row mt mb">
+    <div class="col-md-12">
+        <section class="task-panel tasks-widget">
+            <div class="panel-heading venue-custom-panel-heading">
+                <div class="pull-left">
+                    <h5>
+                        <i class="fa fa-tasks"></i>
+                        Venus
+                    </h5>
+</div>
+                <div class="btn-group pull-right">
+                      <button type="button" class="btn btn-theme03 venueListFilter">Listed</button>
+                      <button type="button" class="btn btn-theme03 dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="javascript:void(0)" onclick="$('.listChecker').hide();$('.listed1').show(); $('.venueListFilter').text($(this).text());">Listed</a></li>
+                        <li><a href="javascript:void(0)" onclick="$('.listChecker').hide();$('.listed0').show(); $('.venueListFilter').text($(this).text());">Not listed</a></li>
+                      </ul>
+                    </div>
+            </div>
+      <div class="panel-body">
+          <div class="task-content">
+              <ul id="sortable" class="task-list">
+                  <?php foreach($eventVenus as $eachVenus){ ?>
+                  <li class="list-primary listChecker <?php echo ($eachVenus->listed==1)?"listed1":"listed0"; ?>" data-orderconnect="<?php echo $eachVenus->venue_id; ?>" >
+                      <i class=" fa fa-ellipsis-v"></i>
+                      <div class="task-title">
+                          <span class="task-title-sp"><?php echo $eachVenus->name; ?></span>
+                          <span class="badge bg-success">City : <?php echo $eachVenus->city; ?></span>
+                          <div class="pull-right hidden-phone">
+                              <a href="/venue/edit/<?php echo $eachVenus->venue_id; ?>">
+                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                              </a>
+                              <a target="_blank" href="/event/<?php echo $eachVenus->event_id; ?>">
+                                  <button class="btn btn-primary btn-xs fa fa-eye"></button>
+                              </a>
+                              <button class="btn btn-danger btn-xs fa fa-trash-o event-trash"></button>
+                          </div>
+                      </div>
+
+                  </li>
+                  <?php } ?>
+              </ul>
+          </div>
+          <div class="add-task-row" style="text-align:center;">
+              <a class="btn btn-default btn-sm pull-left" href="/venue/add">Add New</a>
+          </div>
+      </div>
+    </section>
+    </div><!--/Header menu section ended -->
+</div><!-- /row -->
+</section><! --/wrapper -->
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->

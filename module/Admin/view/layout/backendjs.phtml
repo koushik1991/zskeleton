@@ -1,0 +1,63 @@
+<?php
+$controller = strtolower($controller);
+$action = strtolower($action);
+$t = time();
+switch ($controller) {
+	case 'adminlogin':
+		switch ($action) {
+            case 'login':
+				 $this->headScript()
+				    ->prependFile($this->basePath() . '/js/admin/adminlogin.js?version='.$t);
+            break;
+         }
+    break;
+    case 'banner':
+		switch ($action) {
+            case 'view':
+				 $this->headScript()
+				    ->prependFile($this->basePath() . '/js/admin/bannerview.js?version='.$t);
+            break;
+            case 'addbanner':
+				 $this->headScript()
+				    ->prependFile($this->basePath() . '/js/admin/addbanner.js?version='.$t);
+            break;
+            case 'editbanner':
+				 $this->headScript()
+				    ->prependFile($this->basePath() . '/js/admin/editbanner.js?version='.$t);
+            break;
+         }
+    break;
+    case 'officeaddress':
+		switch ($action) {
+            case 'view':
+				 $this->headScript()
+                    ->prependFile($this->basePath() . '/js/admin/officeview.js?version='.$t);
+            break;
+            case 'add':
+				 $this->headScript()
+                    ->prependFile($this->basePath() . '/js/admin/officeaddres.js?version='.$t)
+                    ->prependFile($this->basePath() . '/js/admin/map.js?version='.$t)
+                    ->prependFile('//maps.googleapis.com/maps/api/js?key=AIzaSyA5p4GT60HuPMEktQcVLu8bJDQKcWCi15o&libraries=geometry,places');
+            break;
+            case 'edit':
+				 $this->headScript()
+                    ->prependFile($this->basePath() . '/js/admin/officeaddres.js?version='.$t)
+                    ->prependFile($this->basePath() . '/js/admin/map.js?version='.$t)
+                    ->prependFile('//maps.googleapis.com/maps/api/js?key=AIzaSyA5p4GT60HuPMEktQcVLu8bJDQKcWCi15o&libraries=geometry,places');
+            break;
+         }
+    break;
+
+	default:
+		break;
+}
+echo $this->headScript()
+
+    ->prependFile($this->basePath() . '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js?version='.$t) //appended last
+    ->prependFile($this->basePath() . '/js/admin/jquery.form.js?version='.$t)
+    ->prependFile($this->basePath() . '/js/admin/logout.popup.js?version='.$t)
+    ->prependFile($this->basePath() . '/js/admin/common-scripts.js?version='.$t)
+    //->prependFile($this->basePath() . '/js/admin/jquery.nicescroll.js')
+    ->prependFile('//code.jquery.com/ui/1.9.2/jquery-ui.js')
+    ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
+?>

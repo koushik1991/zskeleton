@@ -1,0 +1,31 @@
+<?php
+$controller = strtolower($controller);
+$action = strtolower($action);
+$t = time();
+if($action==""){$action = "index";}
+switch ($controller) {
+	case 'corp':
+		switch ($action) {   
+             case 'index':
+                 $this->headLink()
+                ->prependStylesheet($this->basePath() . '/css/Corporateadmin/signform.css?version=' . $t);
+                 break;
+             
+		}
+		break;
+    case 'show':
+		switch ($action) {   
+             case 'viewpage':
+                 $this->headLink()
+                ->prependStylesheet($this->basePath() . '/css/Corporateadmin/viewpage.css?version=' . $t)
+                ->prependStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+                 break;
+             
+		}
+		break;
+    default:
+		break;
+}
+echo $this->headLink()
+         ->prependStylesheet('//fonts.googleapis.com/css?family=Lato:400,700');
+?>

@@ -1,0 +1,263 @@
+<section id="main-content">
+      <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel">
+                  <h4 class="mb">Add new event</h4>
+                  <form class="form-horizontal style-form" method="post" enctype="multipart/form-data" action="/ev/save">
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Event Name</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="event_title">
+                          </div>
+                      </div> <!-- event title -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Premalink</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="event_permalink">
+                          </div>
+                      </div> <!-- event link (permalink) -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Date</label>
+                          <div class="col-sm-5">
+                              <input type="text" class="form-control" name="event_start_date" placeholder="Starts from">
+                          </div>
+                          <div class="col-sm-5">
+                              <input type="text" class="form-control" name="event_end_date" placeholder="To">
+                          </div>
+                      </div> <!-- event date -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Time</label>
+                          <div class="col-sm-5">
+                              <input type="text" class="form-control" name="event_start_time" placeholder="Starts at">
+                          </div>
+                          <div class="col-sm-5">
+                              <input type="text" class="form-control" name="event_end_time" placeholder="To">
+                          </div>
+                      </div> <!-- event time -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Recurring Dates</label>
+                          <div class="col-sm-10">
+                              <label>
+                                  <input type="radio" name="recurintDates" value="1" onclick="$('.recurintDatesBlocks').slideDown(1000)"> Yes
+                                  <input type="radio" name="recurintDates" value="0" onclick="$('.recurintDatesBlocks').slideUp(1000)" checked /> No
+                              </label>
+                              <div class="recurintDatesBlocks" style="display:none;">
+                                  <div class="recurintDatesOptions">
+                                    <div class="col-sm-10 no-Padding rd_custom_class">
+                                      <input class="form-control rd rd_date" type="text" name="rd_event_start_date[]" placeholder="Starts from"/>
+                                      <input class="form-control rd rd_date" type="text" name="rd_event_end_date[]" placeholder="To"/>
+                                      <input class="form-control rd rd_time" type="text" name="rd_event_start_time[]" placeholder="Starts at"/>
+                                      <input class="form-control rd rd_time" type="text" name="rd_event_end_time[]" placeholder="To"/>
+                                      <button class="btn btn-danger btn-xs fa fa-trash-o custom-danger-button" onclick="$(this).parent().remove()"></button>
+                                    </div>
+                                  </div>
+                                  <a class="btn btn-default btn-sm pull-left rd-add" href="javascript:void(0)">Add Date</a>
+                              </div>
+                          </div>
+                      </div> <!-- event recurring date -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Priority</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Will appear as "You may also like" section in event page</label><br/>
+                              <label>
+                              <input type="radio" name="prioritySwitch" value="1"> Yes
+                              <input type="radio" name="prioritySwitch" value="0" checked /> No
+                              </label>
+                          </div>
+                      </div> <!-- event priority switch -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Location</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Venue name: </label>
+                              <input type="text" id="event_location-name" class="form-control" name="venue_name">
+                              <input type="hidden" id="event_address_existence" class="form-control" name="event_address_existence" value="0">
+                              <ul class="allLocations">
+                                  <?php foreach($eventVenus as $eachEventVenus){ ?>
+                                  <li data-venue-id="<?php echo $eachEventVenus->venue_id; ?>" class="<?php echo str_replace(" ","_",trim(strtolower($eachEventVenus->name))); ?>">
+                                  <?php echo trim($eachEventVenus->name); ?></li>
+                                  <?php } ?>
+                              </ul>
+                              <div class="add-task-row" style="text-align:center;">
+                                  <a class="btn btn-default btn-sm pull-left" onclick="$('.venueWrapper').show();" href="javascript:void(0)">Add new venue</a>
+                              </div>
+                          </div>
+
+                      </div> <!-- event location -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Description</label>
+                          <div class="col-sm-10">
+                              <textarea name="event_desc" class="form-control" style="height:100px;"><p>kjhkjh rfsfs</p><p>df fdsdsf s</p><p>dfsddsdfds</p></textarea>
+                          </div>
+                      </div> <!-- event description -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Category</label>
+                          <div class="col-sm-10">
+                              <select class="form-control" name="event_category">
+                                  <option value="0">Select category</option>
+                                <?php foreach($categories as $eachCategories){ ?>
+                                  <option value="<?php echo $eachCategories->id; ?>"><?php echo $eachCategories->name; ?></option>
+                                <?php } ?>
+                              </select>
+                          </div>
+                      </div> <!-- event categories -->
+                      <div class="form-group">
+                          <div class="art-cover">
+                              <label class="col-sm-2 col-sm-2 control-label">Performing Artists</label>
+                              <div class="col-sm-10">
+                                  <input class="form-control art showArtistAfterSelection" type="text" />
+                                  <input class="form-control art" type="hidden" name="art[]" readonly="">
+                                  <button class="btn btn-danger btn-xs fa fa-trash-o" onclick="$(this).parent().remove()"></button>
+                                  <ul class="allArtistList" style="display:none;">
+
+                                  </ul>
+                              </div>
+
+                          </div>
+                          <div class="col-sm-10">
+                            <a class="btn btn-default btn-sm pull-left art-add" href="javascript:void(0)">Add artists</a>
+                          </div>
+                      </div> <!-- event artists -->
+
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Event Creatives</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Show on home page slider?</label><br/>
+                              <label>
+                                  <input type="radio" name="optionSlider" value="1" onclick="$('.homePageSlider').slideDown(1000)"> Yes
+                                  <input type="radio" name="optionSlider" value="0" onclick="$('.homePageSlider').slideUp(1000)" checked /> No
+						      </label>
+                              <hr>
+                              <div class="homePageSlider" style="display:none;">
+                              <label class="control-label">Home page slider image</label>
+                              <span class="help-block help-block-tileImage">Dimensions : Standard width 650px x height 415px</span>
+                              <input class="form-control" type="file" name="tileImage"/>
+                              <hr>
+                              </div>
+                              <label class="control-label">Feature this event on Home page.</label>
+                              <span class="help-block">Do you want to feature this event on Home page?</span>
+                              <label>
+                                  <input type="radio" name="optionFeaturedImage" id="optionsRadios1" value="1" onclick="$('.homePageFeature').slideDown(1000)"> Yes
+                                  <input type="radio" name="optionFeaturedImage" id="optionsRadios1" value="0" onclick="$('.homePageFeature').slideUp(1000)" checked=""> No
+						      </label>
+                              <hr>
+                              <div class="homePageFeature" style="display:none;">
+                                  <label class="control-label">Event Featured Image</label>
+                                  <span class="help-block help-block-featureImage">Dimensions : Width 540px x Height 322px</span>
+                                  <input class="form-control" type="file" name="    featureImage"/>
+                                  <hr>
+                              </div>
+
+
+                              <label class="control-label">Event Detail Image</label>
+                              <span class="help-block help-block-errorBlock">Dimensions : Width 750px x Height 380px</span>
+                              <input class="form-control" type="file" name="detailImage"/>
+
+                              <hr>
+                          </div>
+                      </div> <!-- event images -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Add gallery image</label>
+                          <div class="col-sm-10">
+                              <a href="javascript:void(0)" class="control-label" onclick="$('.imageWrapper').show();">Add images</a>
+                              <div class="imagegallery">
+
+                              </div>
+                          </div>
+                      </div> <!-- event gallery -->
+                      <div class="form-group">
+                          <div class="tc-cover">
+                              <label class="col-sm-2 col-sm-2 control-label">Terms & condition</label>
+                              <div class="col-sm-10">
+                                  <input class="form-control tc" type="text" name="tc[]" onclick="$(this).parent().find('ul.allTC').show()" />
+                                  <button class="btn btn-danger btn-xs fa fa-trash-o" onclick="$(this).parent().remove()"></button>
+                                  <br/>
+                                  <ul class="allTC">
+                                  <?php foreach($TCList as $eachTC){ ?>
+                                      <li onclick="$(this).parent().parent().find('input.tc').val($(this).text().trim()); $(this).parent().hide();">
+                                      <?php echo trim($eachTC->text); ?>
+                                      </li>
+                                  <?php } ?>
+                                  </ul>
+                              </div>
+
+                          </div>
+                          <div class="col-sm-10">
+                            <a class="btn btn-default btn-sm pull-left tc-add-new" href="javascript:void(0)">Add Row</a>
+                          </div>
+                      </div> <!-- event terms & condition -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Add on's</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Add Giveaway *</label><br/>
+                              <label>
+                                  <input type="radio" name="optionGiveaway" value="yes"> Yes
+                                  <input type="radio" name="optionGiveaway" value="no" checked /> No
+						      </label>
+                              <hr/>
+                              <label class="control-label">Tile Button Text</label>
+                              <span class="help-block">Appears on the event tiles in every page.</span>
+                              <label>
+                                  <input type="radio" name="optionsButtonText" value="RSVP" checked=""> RSVP
+                                  <input type="radio" name="optionsButtonText" value="Book" checked=""> Book
+                                  <input type="radio" name="optionsButtonText" value="Win" checked=""> Win
+						      </label>
+                          </div>
+                      </div> <!-- event Add on's -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Authorisation</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="event_author" value="Admin" readonly>
+                          </div>
+                      </div> <!-- event title -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Venue</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Venue logo</label>
+                              <input class="form-control" type="file" name="venueLogoImage"/>
+                          </div>
+                      </div> <!-- event venue -->
+
+                      <div class="hidden">
+                      <ul class="artistLists">
+                          <?php foreach($artists as $eachArtists){ ?>
+                          <li data-artist-id="<?php echo $eachArtists->artist_id; ?>" class="<?php echo str_replace(" ","_",trim(strtolower($eachArtists->title))); ?>">
+                          <?php echo trim($eachArtists->title); ?></li>
+                          <?php } ?>
+                      </ul>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-sm-10">
+                            <input type="submit" value="Publish event" class="btn btn-success btn-sm" name="submittosave" />
+                            <input type="submit" value="Save as draft" class="btn btn-success btn-sm" name="submittosave" />
+                            <input type="submit" value="Private" class="btn btn-success btn-sm" name="submittosave" />
+                          </div>
+                      </div>
+                  </form>
+              </div>
+            </div><!-- Event form section-->
+        </div><!-- /row -->
+      </section><! --/wrapper -->
+
+</section>
+<div class="imageWrapper" style="position: fixed; top: 13%;left: 10%;z-index: 999;background: #000;width: 79%; margin: 0 auto; height: 560px;  overflow-y: scroll;display:none;">
+    <div style="text-align: center; color: #fff; text-transform: UPPERCASE; margin-top: 10px; font-size: 20px; border-bottom: 2px solid #fff;">
+        <label>Image manager</label>
+        <span style="height: 28px; border: 2px solid #fff; width: 28px;position: absolute; right: 20px; border-radius: 50%; cursor:pointer;" onclick="$('.imageWrapper').hide();">X</span>
+    </div>
+    <div style="padding: 10px;">
+        <?php echo file_get_contents('http://inbuzzup.localhost/image/fetchmedia'); ?>
+    </div>
+</div>
+<div class="venueWrapper" style="position: fixed;top: 13%;left: 27%;z-index: 999;background: #fff;width: 50%;margin: 0px auto;height: 560px; overflow-y: scroll; display:none;">
+    <div style="text-align: center; color: #fff; text-transform: UPPERCASE; margin-top: 10px; font-size: 20px; border-bottom: 2px solid #fff;">
+        <span style="height: 28px; border: 2px solid #fff; width: 28px;position: absolute; right: 20px; border-radius: 50%; cursor:pointer;" onclick="$('.imageWrapper').hide();">X</span>
+    </div>
+    <div style="padding: 10px;">
+        <?php echo file_get_contents('http://inbuzzup.localhost/image/addvenuepopup'); ?>
+    </div>
+</div>

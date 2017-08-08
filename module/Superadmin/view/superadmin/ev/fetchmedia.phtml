@@ -1,0 +1,41 @@
+<style>
+div.desc{
+    height: 150px;
+    width: 150px;
+    float: left;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #fff;
+    margin-left: 20px;
+    border: 2px solid;
+}
+div.desc img{
+    width: 150px;
+    height: 150px;
+}
+
+.overlay {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-color: #68dff0;
+  text-align: center;
+    cursor: pointer;
+}
+
+</style>
+<script type="text/javascript">
+function getTheLink(image) {
+    alert(image);
+}
+</script>
+<?php foreach($images as $eachImageFromDirectory) {?>
+    <div class="desc">
+
+                <a><img class="img-responsive" src="<?php echo $eachImageFromDirectory ?>" alt=""></a>
+
+            <div class="overlay" onclick="getTheLink('<?php echo $eachImageFromDirectory ?>')">Add</div>
+
+    </div>
+
+<?php } ?>

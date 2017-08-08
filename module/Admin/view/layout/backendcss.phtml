@@ -1,0 +1,17 @@
+<?php
+$controller = strtolower($controller);
+$action = strtolower($action);
+$t = time();
+switch ($controller) {
+	default:
+		break;
+}
+echo $this->headLink()
+    ->prependStylesheet('//fonts.googleapis.com/css?family=Ruda:400,700,900')
+    ->prependStylesheet('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css') //appended last
+    ->prependStylesheet($this->basePath() . '/css/admin/style_temp.css?version='.$t)
+    ->prependStylesheet($this->basePath() . '/css/admin/style.css?version='.$t)
+    ->prependStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    ->prependStylesheet($this->basePath() . '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600,300' )
+    ->prependStylesheet($this->basePath() . '/css/bootstrap/bootstrap.css');
+?>

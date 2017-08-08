@@ -1,0 +1,81 @@
+<section id="main-content" style="margin-left:0;">
+      <section>
+        <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel">
+                  <h4 class="mb">Add new venue</h4>
+                  <form class="form-horizontal style-form" method="post" id="venuePopupForm">
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Name</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="venue_name">
+                          </div>
+                      </div> <!-- venue name -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Description</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="venue_description">
+                          </div>
+                      </div> <!-- venue description -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Location</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Address: </label>
+                              <input type="text" id="event_location-adress" class="form-control" name="venue_address">
+                              <label class="control-label">City/Town: </label>
+                              <input type="text" id="event_location-citytown" class="form-control" name="venue_citytown">
+                              <label class="control-label">State: </label>
+                              <input type="text" id="event_location-state" class="form-control" name="venue_state">
+                              <label class="control-label">Postcode: </label>
+                              <input type="text" id="event_location-postcode" class="form-control" name="venue_postcode">
+                              <label class="control-label">Region: </label>
+                              <input type="text" id="event_location-region" class="form-control" name="venue_region">
+                              <label class="control-label">Country: </label>
+                              <input type="text" id="event_location-country" class="form-control" name="venue_country">
+                              <input type="hidden" id="location_lattitude" name="location_lattitude" value="0" />
+                              <input type="hidden" id="location_longitude" name="location_longitude" value="0" />
+                          </div>
+                          <div class="col-sm-10">
+                              <div id="location_map" class="map_visibility"></div>
+                          </div>
+                      </div> <!-- venue location -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Venue Website</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="venue_website">
+                              <span class="help-block">Enter venue's website link</span>
+                          </div>
+                      </div> <!-- venue Website -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Venue Instagram</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="venue_instagram">
+                              <span class="help-block">Enter venue's instagram link</span>
+                          </div>
+                      </div> <!-- venue Instagram -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Venue Twitter</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="venue_twitter">
+                              <span class="help-block">Enter venue's twitter link</span>
+                          </div>
+                      </div> <!-- venue Twitter -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Venue Facebook</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="venue_facebook">
+                              <span class="help-block">Enter venue's facebook page link</span>
+                          </div>
+                      </div> <!-- venue Facebook -->
+                      <div class="form-group">
+                          <div class="col-sm-10">
+                            <input type="submit" value="Save" id="venuePopupSubmit" class="btn btn-success btn-sm" name="submittosave" />
+                          </div>
+                      </div>
+                  </form>
+              </div>
+            </div><!-- Event form section-->
+        </div><!-- /row -->
+      </section><! --/wrapper -->
+
+</section>

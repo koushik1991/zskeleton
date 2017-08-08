@@ -1,0 +1,124 @@
+<?php
+
+switch ($currentPage) {
+	case 'add':
+       
+		$this->headScript()
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/align.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/align.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/code_beautifier.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/code_view.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/colors.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/font_size.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/font_family.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/image_manager.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/image.min.js?version=' . $t)            
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/line_breaker.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/link.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/lists.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/url.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/char_counter.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/fullscreen.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/froala_editor.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.timepicker.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.geocomplete.js?version=' . $t)
+            ->prependFile('//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDTfu4q_1LGoIybgsTKUMSzNJbizewGTXc')      
+            ->prependFile($this->basePath() . '/assets/js/bootstrap-switch.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.tagsinput.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js?version=' . $t);
+        break;
+    case 'edit':
+         $this->headScript()
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/align.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/align.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/code_beautifier.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/code_view.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/colors.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/font_size.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/font_family.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/image_manager.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/image.min.js?version=' . $t)            
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/line_breaker.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/link.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/lists.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/url.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/char_counter.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/fullscreen.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/froala_editor.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.timepicker.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.geocomplete.js?version=' . $t)
+            ->prependFile('//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDTfu4q_1LGoIybgsTKUMSzNJbizewGTXc')      
+            ->prependFile($this->basePath() . '/assets/js/bootstrap-switch.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.tagsinput.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js?version=' . $t);   
+		break;
+    case 'addticket':
+        $this->headScript()
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/align.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/align.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/code_beautifier.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/code_view.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/colors.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/font_size.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/font_family.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/image_manager.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/image.min.js?version=' . $t)            
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/line_breaker.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/link.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/lists.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/url.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/char_counter.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/fullscreen.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/froala_editor.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.timepicker.min.js?version=' . $t);
+        break;
+    case 'editticket':
+        $this->headScript()
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/align.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/align.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/code_beautifier.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/code_view.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/colors.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/font_size.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/font_family.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/image_manager.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/image.min.js?version=' . $t)            
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/line_breaker.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/link.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/lists.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/url.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/char_counter.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/plugins/fullscreen.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/texteditor/froala_editor.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.timepicker.min.js?version=' . $t);
+        break;
+    case 'addarticle':
+         $this->headScript()
+            ->prependFile($this->basePath() . '/assets/js/texteditor/froala_editor.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.timepicker.min.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.geocomplete.js?version=' . $t)
+            ->prependFile('//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDTfu4q_1LGoIybgsTKUMSzNJbizewGTXc')      
+            ->prependFile($this->basePath() . '/assets/js/bootstrap-switch.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/jquery.tagsinput.js?version=' . $t)
+            ->prependFile($this->basePath() . '/assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js?version=' . $t);   
+		break;
+    case 'media':
+        $this->headScript()
+            ->prependFile($this->basePath() . '/assets/js/fancybox/jquery.fancybox.js?version=' . $t);
+        break;
+	default :
+		break;
+			
+}
+
+$this->headScript()
+	->prependFile($this->basePath() . '/assets/js/customise/backend.js?version=' . $t)
+	->prependFile($this->basePath() . '/assets/js/common-scripts.js?version=' . $t)
+	->prependFile($this->basePath() . '/assets/js/jquery.nicescroll.js?version=' . $t)
+	->prependFile($this->basePath() . '/assets/js/jquery.scrollTo.min.js?version=' . $t)
+	->prependFile($this->basePath() . '/assets/js/jquery.dcjqaccordion.2.7.js?version=' . $t)
+	->prependFile($this->basePath() . '/assets/js/bootstrap.min.js?version=' . $t)
+	->prependFile('//code.jquery.com/ui/1.10.3/jquery-ui.js')
+	->prependFile($this->basePath() . '/assets/js/jquery.js?version=' . $t);
+echo $this->headScript();
+?>

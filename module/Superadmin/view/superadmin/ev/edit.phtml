@@ -1,0 +1,314 @@
+<?php
+$location = json_decode($event->event_location, true);
+$latlang = json_decode($event->event_venue_map, true);
+$extraImage = json_decode($event->event_extra_images,true);
+$allArtistsArray = array();
+foreach($artists as $eachArtist)
+{
+    $allArtistsArray[$eachArtist->artist_id] = $eachArtist;
+}
+?>
+<section id="main-content">
+      <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel">
+                  <h4 class="mb">Edit event</h4>
+
+                  <form class="form-horizontal style-form" method="post" enctype="multipart/form-data" action="/ev/update">
+                      <input type="hidden" value="<?php echo $event->event_id; ?>" name="event_id" />
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Event Name</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="event_title" value="<?php echo $event->event_title ?>">
+                          </div>
+                      </div> <!-- event title -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Premalink</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="event_permalink" value="<?php echo $event->event_link ?>">
+                          </div>
+                      </div> <!-- event link (permalink) -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Date</label>
+                          <div class="col-sm-5">
+                              <input type="text" class="form-control" name="event_start_date" placeholder="Starts from" value="<?php echo $event->event_start_date ?>">
+                          </div>
+                          <div class="col-sm-5">
+                              <input type="text" class="form-control" name="event_end_date" placeholder="To" value="<?php echo $event->event_end_date ?>">
+                          </div>
+                      </div> <!-- event date -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Time</label>
+                          <div class="col-sm-5">
+                              <input type="text" class="form-control" name="event_start_time" placeholder="Starts at" value="<?php echo $event->event_start_time ?>">
+                          </div>
+                          <div class="col-sm-5">
+                              <input type="text" class="form-control" name="event_end_time" placeholder="To" value="<?php echo $event->event_end_time ?>">
+                          </div>
+                      </div> <!-- event time -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Recurring Dates</label>
+                          <div class="col-sm-10">
+                              <label>
+                                  <input type="radio" name="recurintDates" value="1" <?php echo ($event->recurring_event == 1)? 'checked':''; ?> onclick="$('.recurintDatesBlocks').slideDown(1000)"> Yes
+                                  <input type="radio" name="recurintDates" value="0" <?php echo ($event->recurring_event == 0)? 'checked':''; ?>  onclick="$('.recurintDatesBlocks').slideUp(1000)" /> No
+                              </label>
+                              <div class="recurintDatesBlocks"  <?php echo ($event->recurring_event == 1)? 'style="display:block;"':'style="display:none;"'; ?> >
+                                  <div class="recurintDatesOptions">
+                                    <div class="col-sm-10 no-Padding rd_custom_class">
+                                      <input class="form-control rd rd_date" type="text" name="rd_event_start_date[]" placeholder="Starts from"/>
+                                      <input class="form-control rd rd_date" type="text" name="rd_event_end_date[]" placeholder="To"/>
+                                      <input class="form-control rd rd_time" type="text" name="rd_event_start_time[]" placeholder="Starts at"/>
+                                      <input class="form-control rd rd_time" type="text" name="rd_event_end_time[]" placeholder="To"/>
+                                      <button class="btn btn-danger btn-xs fa fa-trash-o custom-danger-button" onclick="$(this).parent().remove()"></button>
+                                    </div>
+                                  </div>
+                                  <a class="btn btn-default btn-sm pull-left rd-add" href="javascript:void(0)">Add Date</a>
+                              </div>
+                          </div>
+                      </div> <!-- event recurring date -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Priority</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Will appear as "You may also like" section in event page</label><br/>
+                              <label>
+                              <input type="radio" name="prioritySwitch" value="1" <?php echo ($event->prioritySwitch == 1)? 'checked':''; ?>> Yes
+                              <input type="radio" name="prioritySwitch" value="0" <?php echo ($event->prioritySwitch == 0)? 'checked':''; ?> /> No
+                              </label>
+                          </div>
+                      </div> <!-- event priority switch -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Location</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Venue name: </label>
+                              <input type="text" id="event_location-name" class="form-control" name="venue_name" value="<?php echo $venueName->name ?>">
+                              <input type="hidden" id="event_address_existence" class="form-control" name="event_address_existence" value="<?php echo $event->event_venue_id ?>">
+                              <ul class="allLocations">
+                                  <?php foreach($eventVenus as $eachEventVenus){ ?>
+                                  <li data-venue-id="<?php echo $eachEventVenus->venue_id; ?>" class="<?php echo str_replace(" ","_",trim(strtolower($eachEventVenus->name))); ?>">
+                                  <?php echo trim($eachEventVenus->name); ?></li>
+                                  <?php } ?>
+                              </ul>
+                              <div class="add-task-row" style="text-align:center;">
+                                  <a class="btn btn-default btn-sm pull-left" onclick="$('.venueWrapper').show();" href="javascript:void(0)">Add new venue</a>
+                              </div>
+                          </div>
+
+                      </div> <!-- event location -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Description</label>
+                          <div class="col-sm-10">
+                              <textarea name="event_desc" class="form-control" style="height:100px;"><?php echo $event->event_desc ?></textarea>
+                          </div>
+                      </div> <!-- event description -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Category</label>
+                          <div class="col-sm-10">
+                              <select class="form-control"name="event_category">
+                                <?php foreach($categories as $eachCategories){ ?>
+                                  <option value="0">Select category</option>
+                                    <option value="<?php echo $eachCategories->id; ?>" <?php echo (($event->event_category == $eachCategories->id) ? 'selected':''); ?>><?php echo $eachCategories->name; ?></option>
+                                <?php } ?>
+                              </select>
+                          </div>
+                      </div> <!-- event categories -->
+
+                      <div class="form-group">
+                          <div class="art-cover">
+                              <label class="col-sm-2 col-sm-2 control-label">Performing Artists</label>
+
+                                  <?php $hold = json_decode($event->event_artists, true);
+                                        $artCounter = 0;
+                                  foreach($hold as $eachArt) {
+                                  if($artCounter == 0) { ?>
+                                  <div class="col-sm-10">
+                                  <?php } else { ?>
+                                  <div class="art_subcover">
+                                  <label class="col-sm-2 col-sm-2 control-label"></label>
+                                  <div class="col-sm-10">
+                                  <?php } ?>
+                                  <input class="form-control art showArtistAfterSelection" type="text" value="<?php echo $allArtistsArray[$eachArt]->title; ?>" />
+                                  <input class="form-control art" type="hidden" name="art[]" value="<?php echo $allArtistsArray[$eachArt]->artist_id; ?>" />
+                                  <button class="btn btn-danger btn-xs fa fa-trash-o" onclick="$(this).parent().remove()"></button>
+                                  <?php if($artCounter == 0) {
+                                      $artCounter++;
+                                  } else { ?>
+                                  </div>
+                                  <?php } ?>
+                                  </div>
+                                  <?php } ?>
+
+
+                          </div>
+                          <div class="col-sm-10">
+                            <a class="btn btn-default btn-sm pull-left art-add" href="javascript:void(0)">Add artists</a>
+                          </div>
+                      </div> <!-- event artists -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Event Creatives</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Show on home page slider?</label><br/>
+                              <label>
+                                  <input type="radio" name="optionSlider" value="1" <?php echo ($event->event_slider == 1)? 'checked':''; ?> onclick="$('.homePageSlider').slideDown(1000)"/> Yes
+                                  <input type="radio" name="optionSlider" value="0" <?php echo ($event->event_slider == 0)? 'checked':''; ?> onclick="$('.homePageSlider').slideUp(1000)" /> No
+						      </label>
+                              <hr>
+                              <div class="homePageSlider" <?php echo ($event->event_slider == 0)? 'style="display:none;"':'style="display:block;"'; ?>>
+                              <label class="control-label">Home page slider image</label>
+                              <?php if(trim($event->event_title_image) != "") { ?>
+                                <img src="<?php echo $event->event_title_image; ?>" style="height:80px; width:80px;" />
+                              <?php } ?>
+                              <span class="help-block help-block-tileImage">Dimensions : Standard width 650px x height 415px</span>
+                              <input class="form-control" type="file" name="tileImage"/>
+                              <input type="hidden" name="tileImageHidden" value="<?php echo $event->event_title_image; ?>" />
+                              <hr>
+                              </div>
+                              <label class="control-label">Feature this event on home page.</label>
+                              <span class="help-block">Do you want to feature this event on Home page?</span>
+                              <label>
+                                  <input type="radio" name="optionFeaturedImage" id="optionsRadios1" value="1" onclick="$('.homePageFeature').slideDown(1000)" <?php echo ($event->event_featured == 1)? 'checked':''; ?>> Yes
+                                  <input type="radio" name="optionFeaturedImage" id="optionsRadios1" value="0" onclick="$('.homePageFeature').slideUp(1000)" <?php echo ($event->event_featured == 0)? 'checked':''; ?>> No
+						      </label>
+                              <hr>
+                              <div class="homePageFeature" <?php echo ($event->event_featured == 0)? 'style="display:none;"':'style="display:block;"'; ?>>
+                                  <label class="control-label">Event Featured Image :- </label>
+                                  <?php if(trim($event->event_featured_image) != "") { ?>
+                                    <img src="<?php echo $event->event_featured_image; ?>" style="height:80px; width:80px;" />
+                                  <?php } ?>
+                                  <span class="help-block help-block-featureImage">Dimensions : Width 540px x Height 322px</span>
+                                  <input class="form-control" type="file" name="featureImage"/>
+                                  <input type="hidden" name="featureImageHidden" value="<?php echo $event->event_featured_image; ?>" />
+                                  <hr>
+                              </div>
+                              <label class="control-label">Event Detail Image :- </label>
+                              <?php if(trim($event->event_image_big) != "") { ?>
+                                <img src="<?php echo $event->event_image_big; ?>" style="height:80px; width:80px;" />
+                              <?php } ?>
+                              <span class="help-block help-block-errorBlock">Dimensions : Width 750px x Height 380px</span>
+                              <input class="form-control" type="file" name="detailImage"/>
+                              <input type="hidden" name="detailImageHidden" value="<?php echo $event->event_image_big; ?>" />
+                          </div>
+                      </div> <!-- event images -->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Add gallery image</label>
+                          <div class="col-sm-10">
+                              <a href="javascript:void(0)" class="control-label" onclick="$('.imageWrapper').show();">Add images</a>
+                              <div class="imagegallery">
+                                  <?php
+                                  if($extraImage != ""){
+                                  foreach($extraImage as $eachExtraImage){ ?>
+                                    <div class="descinadd"><input type="hidden" name="imagegallery[]" value="<?php echo $eachExtraImage; ?>"><img class="img-responsive" src="<?php echo $eachExtraImage; ?>" alt=""><span onclick="$(this).parent().remove()">X</span></div>
+                                  <?php } } ?>
+                              </div>
+                          </div>
+                      </div> <!-- event gallery -->
+
+                      <div class="form-group">
+                          <div class="tc-cover">
+                              <label class="col-sm-2 col-sm-2 control-label">Terms & condition</label>
+
+                                  <?php $hold = json_decode($event->event_terms, true);
+                                        $TCCounter = 0;
+                                  foreach($hold as $eachTC) {
+                                  if($TCCounter == 0) { ?>
+                                  <div class="col-sm-10">
+                                  <?php } else { ?>
+                                  <div class="tc_subcover">
+                                  <label class="col-sm-2 col-sm-2 control-label"></label>
+                                  <div class="col-sm-10">
+                                  <?php } ?>
+                                  <input class="form-control tc" type="text" name="tc[]" value="<?php echo $eachTC; ?>" />
+                                  <button class="btn btn-danger btn-xs fa fa-trash-o" onclick="$(this).parent().remove()"></button>
+                                  <?php if($TCCounter == 0) {
+                                      $TCCounter++;
+                                  } else { ?>
+                                  </div>
+                                  <?php } ?>
+                                  </div>
+                                  <?php } ?>
+
+
+                          </div>
+                              <ul class="allTC">
+                                  <?php foreach($TCList as $eachTC){ ?>
+                                      <li onclick="$(this).parent().parent().find('input.tc').val($(this).text().trim()); $(this).parent().hide();">
+                                      <?php echo trim($eachTC->text); ?>
+                                      </li>
+                                  <?php } ?>
+                                  </ul>
+                          <div class="col-sm-10">
+                            <a class="btn btn-default btn-sm pull-left tc-add-new" href="javascript:void(0)">Add Row</a>
+                          </div>
+                      </div> <!-- event terms and condition -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Add on's</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Add Giveaway *</label><br/>
+                              <label>
+                                  <input type="radio" name="optionGiveaway" value="yes"> Yes
+                                  <input type="radio" name="optionGiveaway" value="no" checked /> No
+						      </label>
+                              <hr/>
+                              <label class="control-label">Tile Button Text</label>
+                              <span class="help-block">Appears on the home page tiles.</span>
+                              <label>
+                                  <input type="radio" name="optionsButtonText" value="RSVP" <?php echo ($event->event_button_text == 'RSVP')? 'checked':''; ?>> RSVP
+                                  <input type="radio" name="optionsButtonText" value="Book" <?php echo ($event->event_button_text == 'Book')? 'checked':''; ?>> Book
+                                  <input type="radio" name="optionsButtonText" value="Win" <?php echo ($event->event_button_text == 'Win')? 'checked':''; ?>> Win
+						      </label>
+                          </div>
+                      </div> <!-- event Add on's -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Authorisation</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="event_author" value="Admin" readonly>
+                          </div>
+                      </div> <!-- event title -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Venue</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">Venue logo :- </label>
+                              <?php if(trim($event->event_venue_logo) != "") { ?>
+                                <img src="<?php echo $event->event_venue_logo; ?>" style="height:80px; width:80px;" />
+                              <?php } ?>
+                              <input class="form-control" type="file" name="venueLogoImage"/>
+                              <input type="hidden" name="venueLogoImageHidden" value="<?php echo $event->event_venue_logo; ?>" />
+                          </div>
+                      </div> <!-- event venue -->
+
+                      <div class="hidden">
+                      <ul class="artistLists">
+                          <?php foreach($allArtistsArray as $eachArtists){ ?>
+                          <li data-artist-id="<?php echo $eachArtists->artist_id; ?>" class="<?php echo str_replace(" ","_",trim(strtolower($eachArtists->title))); ?>">
+                          <?php echo trim($eachArtists->title); ?></li>
+                          <?php } ?>
+                      </ul>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-sm-10">
+                            <input type="submit" value="Save event" class="btn btn-success btn-sm" />
+                          </div>
+                      </div>
+                  </form>
+              </div>
+</div><!-- Event form section-->
+        </div><!-- /row -->
+      </section><! --/wrapper -->
+</section>
+<div class="imageWrapper" style="position: fixed; top: 13%;left: 10%;z-index: 999;background: #000;width: 79%; margin: 0 auto; height: 560px;  overflow-y: scroll;display:none;">
+<div style="text-align: center; color: #fff; text-transform: UPPERCASE; margin-top: 10px; font-size: 20px; border-bottom: 2px solid #fff;">
+<label>Image manager</label>
+<span style="height: 28px; border: 2px solid #fff; width: 28px;position: absolute; right: 20px; border-radius: 50%; cursor:pointer;" onclick="$('.imageWrapper').hide();">X</span>
+</div>
+<div style="padding: 10px;">
+<?php echo file_get_contents('http://inbuzzup.localhost/image/fetchmedia'); ?>
+</div>
+</div>

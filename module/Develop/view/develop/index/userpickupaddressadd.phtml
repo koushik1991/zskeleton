@@ -1,0 +1,63 @@
+<style type="text/css">
+    .form-bg {
+        margin: 0 auto;
+        width: 500px;
+        background: #e2e2e2;
+        padding: 20px;
+        overflow: hidden;
+    }
+    .first_div {
+        width: 46%;
+        float: left;
+        display: block;
+        overflow: hidden;
+    }
+    #div {
+        height: 50px;
+        width: 50px;
+        float: left;
+    }
+</style>
+<form class="form-bg" action="/develop/userpickupaddressadd/<?php echo $user_registered_id; ?>" method="post">
+    <div class="first_div">
+    <label>p_address_1</label>
+    <br>
+    <textarea name="p_address_1"></textarea>
+    <br>
+    <label>p_address_2</label>
+    <br>
+    <textarea name="p_address_2"></textarea>
+    <br>
+    <label>p_address_land_mark</label>
+    <br>
+    <input  type="text" name="p_address_land_mark" value="">
+    <input type="hidden" name="p_address_lat" value="" />
+    <input type="hidden" name="p_address_lang" value="" />
+    <br>
+    <label>p_address_pincode</label>
+    <br>
+    <input  type="text" name="p_address_pincode">
+    <br>
+    <label>p_address_city</label>
+    <br>
+    <input  type="text" name="p_address_city" value="">
+    <br>
+    <label>p_address_state</label>
+    <br>
+    <input  type="text" name="p_address_state" value="">
+    <br>
+    <label>p_address_country</label>
+    <br>
+    <input  type="text" name="p_address_country" value="">
+    <br>
+    <label>p_address_contact</label>
+    <br>
+    <input  type="text" name="p_address_contact" value="">
+    <br>
+    <input type="submit" value="Next" name="userPickupAddressSubmission">
+    <br>
+    </div>
+    <div id="map">
+
+    </div>
+</form>

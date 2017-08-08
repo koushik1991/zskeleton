@@ -1,0 +1,42 @@
+<section id="main-content">
+      <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel">
+                  <h4 class="mb">Edit category</h4>
+                  <form class="form-horizontal style-form" method="post" action="/ev/updatecategory" enctype="multipart/form-data">
+                      <input type="hidden" value="<?php echo $eventCategory->id ?>" name="eventCategoryId" />
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Name</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" name="category_title" value="<?php echo $eventCategory->name ?>">
+                          </div>
+                      </div> <!-- categories title -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Description</label>
+                          <div class="col-sm-10">
+                              <textarea name="category_desc" class="form-control" style="height:100px;"><?php echo $eventCategory->description ?></textarea>
+                          </div>
+                      </div> <!-- categories description -->
+                      <div class="form-group">
+                          <label class="col-sm-2 col-sm-2 control-label">Photo</label>
+                          <div class="col-sm-10">
+                              <label class="control-label">category pic :- </label>
+                              <?php if(trim($eventCategory->image) != "") { ?>
+                                <img src="<?php echo $eventCategory->image; ?>" style="height:80px; width:80px;" />
+                              <?php } ?>
+                              <input class="form-control" type="file" name="category_Image" />
+                              <input type="hidden" name="category_ImageHidden" value="<?php echo $eventCategory->image; ?>" />
+                          </div>
+                      </div> <!-- categories image -->
+                      <div class="form-group">
+                          <div class="col-sm-10">
+                            <input type="submit" class="btn btn-success btn-sm" value="Save category" />
+                          </div>
+                      </div>
+                  </form>
+              </div>
+            </div>
+        </div><!-- /row -->
+      </section><! --/wrapper -->
+</section>
